@@ -8,14 +8,17 @@ cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 resposta = cliente.chat.completions.create(
     messages=[
-        {
-            "role": "system",
-            "content": "Liste o nome dos produtos sem considerar a descrição"
-        },
-        {
-            "role": "user",
-            "content": "Liste 3 produtos sustentaveis"
-        }
+       {
+    "role":"system",
+    "content": """
+    Classifique o produto abaixo em uma das categorias: Higiene Pessoal, Moda ou Casa de uma descrição da categoria.
+    """
+},{
+    "role" : "user",
+    "content": """
+    Escova de dentes de bambu
+    """
+}
     ],
     model="gpt-4"
 )
